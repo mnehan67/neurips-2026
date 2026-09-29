@@ -1,0 +1,554 @@
+/*
+ * Base structure adapted from the Nerfies project page template.
+ * Visual treatment customized toward a clean Hi-Q-style academic page:
+ * white canvas, restrained blue accents, thin grey rules, minimal containers.
+ */
+
+:root {
+  --text: #22252a;
+  --muted: #6f737a;
+  --line: #e4e6e9;
+  --line-strong: #cfd3d7;
+  --blue: #209cee;
+  --blue-dark: #1687cf;
+  --blue-soft: #eaf6fe;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #fff;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  color: var(--text);
+  background: #fff;
+  font-size: 16px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Hero ---------- */
+
+.publication-hero .hero-body {
+  padding-top: 4.7rem;
+  padding-bottom: 2.35rem;
+}
+
+.publication-title,
+.publication-authors,
+.acceptance-block,
+.teaser,
+.section-heading,
+.title,
+figcaption {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+}
+
+.publication-title {
+  line-height: 1.10;
+  letter-spacing: -0.035em;
+  margin-bottom: 1.25rem !important;
+  color: #1f2226;
+}
+
+.publication-authors {
+  margin-bottom: 0.45rem;
+}
+
+.publication-authors a,
+.acceptance-line a,
+.footer-note a {
+  color: var(--blue) !important;
+}
+
+.publication-authors a:hover,
+.acceptance-line a:hover,
+.footer-note a:hover {
+  color: var(--blue-dark) !important;
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.acceptance-block {
+  margin: 1rem auto 1.45rem;
+  font-size: 1.03rem;
+  font-weight: 600;
+  line-height: 1.75;
+}
+
+.acceptance-line {
+  display: block;
+}
+
+.acceptance-note {
+  color: var(--muted);
+  font-weight: 500;
+  margin-left: 0.2rem;
+}
+
+.confetti {
+  font-size: 0.95em;
+}
+
+.publication-links {
+  margin-top: 0.35rem;
+}
+
+.link-block {
+  display: inline-block;
+  margin: 0 0.14rem;
+}
+
+.link-block .button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+  box-shadow: none;
+}
+
+.project-link-disabled {
+  cursor: default !important;
+  pointer-events: none;
+  user-select: none;
+  opacity: 1 !important;
+}
+
+/* ---------- Teaser ---------- */
+
+.teaser .hero-body {
+  padding-top: 0.5rem;
+  padding-bottom: 4.2rem;
+}
+
+.hero-paper-figure {
+  margin: 0 auto 1.45rem;
+}
+
+.paper-teaser-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.teaser-caption {
+  max-width: 860px;
+  margin: 0 auto;
+  color: #4e5359;
+  line-height: 1.5;
+  font-size: 1.15rem;
+}
+
+.teaser-caption strong {
+  color: var(--blue-dark);
+  font-weight: 650;
+}
+
+/* ---------- Sections ---------- */
+
+.section-band,
+.section-band.is-soft {
+  background: #fff !important;
+}
+
+.section-band {
+  padding-top: 4.7rem;
+  padding-bottom: 4.7rem;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  margin-bottom: 2.35rem;
+}
+
+.section-heading .title {
+  margin-bottom: 0.68rem !important;
+  color: #202328;
+  letter-spacing: -0.018em;
+}
+
+.section-kicker {
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.01rem;
+  line-height: 1.62;
+}
+
+.prose-block {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #35393f;
+}
+
+/* ---------- Three-step overview: no cards ---------- */
+
+.overview-grid {
+  margin-top: 0.25rem;
+}
+
+.overview-grid > .column {
+  position: relative;
+}
+
+.overview-grid > .column:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  width: 1px;
+  height: calc(100% - 1rem);
+  background: var(--line);
+}
+
+.overview-card {
+  height: 100%;
+  padding: 0.45rem 1.8rem 0.5rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.overview-card .title {
+  margin-bottom: 0.6rem !important;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.overview-card p {
+  color: #42474d;
+  line-height: 1.64;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  margin-bottom: 0.8rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--blue);
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.step-number::before {
+  content: 'Step ';
+  font-weight: 500;
+}
+
+.main-finding {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  padding: 1.2rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: #34383e;
+  line-height: 1.62;
+  font-size: 1.05rem;
+}
+
+.main-finding strong {
+  color: var(--blue);
+  font-weight: 650;
+}
+
+/* ---------- Method: open columns, no boxes ---------- */
+
+.method-columns {
+  align-items: stretch;
+  margin-top: 0.2rem;
+}
+
+.method-columns > .column:first-child {
+  border-right: 1px solid var(--line);
+}
+
+.method-panel {
+  height: 100%;
+  padding: 0.35rem 2rem 0.25rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  line-height: 1.72;
+  color: #3d4248;
+}
+
+.method-panel .title {
+  margin-bottom: 0.85rem !important;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* ---------- Results ---------- */
+
+.result-block {
+  padding: 0.35rem 0;
+}
+
+.result-block > .title {
+  margin-bottom: 1.85rem !important;
+  color: #262a2f;
+  font-weight: 600;
+}
+
+.result-divider {
+  height: 1px;
+  margin: 3.9rem 0;
+  background: var(--line);
+}
+
+.paper-figure {
+  text-align: center;
+}
+
+.result-figure {
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.result-figure img {
+  display: block;
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.result-figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.dose-figure {
+  max-width: 900px;
+  margin: 0 auto 1.8rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.dose-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.result-copy {
+  max-width: 840px;
+  margin: 1.55rem auto 0;
+  line-height: 1.75;
+  font-size: 1.01rem;
+  color: #40454b;
+}
+
+/* ---------- Hi-Q-like table ---------- */
+
+.result-table-wrap {
+  max-width: 900px;
+  margin: 1.9rem auto 0;
+}
+
+.hiq-table {
+  width: 100%;
+  background: #fff !important;
+  border-collapse: collapse;
+  border-top: 0;
+  border-bottom: 2px solid var(--line-strong);
+  font-size: 0.98rem;
+}
+
+.hiq-table thead th {
+  background: #fff !important;
+  color: #636970;
+  border: 0 !important;
+  border-bottom: 2px solid var(--line-strong) !important;
+  padding: 0.72rem 0.75rem !important;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hiq-table tbody tr {
+  background: #fff !important;
+}
+
+.hiq-table tbody tr:hover {
+  background: #fff !important;
+}
+
+.hiq-table tbody td {
+  background: #fff !important;
+  color: #34393f;
+  border: 0 !important;
+  border-bottom: 1px solid var(--line) !important;
+  padding: 0.72rem 0.75rem !important;
+  vertical-align: middle !important;
+}
+
+.hiq-table tbody tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+.hiq-table th:first-child,
+.hiq-table td:first-child {
+  text-align: left !important;
+}
+
+.hiq-table th:not(:first-child),
+.hiq-table td:not(:first-child) {
+  text-align: center !important;
+}
+
+.hiq-table th:nth-child(3),
+.hiq-table td:nth-child(3) {
+  color: var(--blue-dark);
+  font-weight: 700;
+}
+
+.hiq-table th:nth-child(4),
+.hiq-table td:nth-child(4) {
+  color: #777c82;
+}
+
+/* ---------- BibTeX ---------- */
+
+pre {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.35rem 1.5rem;
+  border-radius: 0;
+  border: 1px solid var(--line);
+  background: #fafafa !important;
+  box-shadow: none;
+}
+
+pre code {
+  white-space: pre-wrap;
+  word-break: normal;
+  color: #31353a;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+.footer-note {
+  color: #72777d;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media screen and (max-width: 768px) {
+  .publication-hero .hero-body {
+    padding-top: 3rem;
+    padding-bottom: 1.8rem;
+  }
+
+  .publication-title {
+    font-size: 2.15rem !important;
+    line-height: 1.12;
+  }
+
+  .acceptance-block {
+    font-size: 0.98rem;
+  }
+
+  .section-band {
+    padding-top: 3.35rem;
+    padding-bottom: 3.35rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.8rem;
+  }
+
+  .overview-grid > .column:not(:last-child)::after {
+    display: none;
+  }
+
+  .overview-grid > .column:not(:last-child) {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .overview-card {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .method-columns > .column:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .method-panel {
+    padding: 0.25rem 0.4rem;
+  }
+
+  .result-figure img {
+    height: auto;
+  }
+
+  .result-divider {
+    margin: 2.8rem 0;
+  }
+
+  .hiq-table {
+    font-size: 0.9rem;
+  }
+
+  .hiq-table thead th,
+  .hiq-table tbody td {
+    padding: 0.62rem 0.5rem !important;
+  }
+}
+
+/* Reliable inline icons for the disabled project-link buttons. */
+.button-svg-icon {
+  width: 1rem;
+  height: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-svg-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  display: block;
+}
+
+
+.version-status {
+  margin-top: 0.85rem;
+  color: #777;
+  font-size: 0.95rem;
+  font-family: 'Noto Sans', sans-serif;
+}
