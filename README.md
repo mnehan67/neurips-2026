@@ -1,17 +1,27 @@
 # Transformer MLP Transplants Depend on the Receiving State — Project Page
 
-Static project page for the paper accepted at **MusIML 2026** and **NewInML 2026 (Poster)**.
+Static project page for the NeurIPS 2026 workshop paper accepted at **NewInML 2026** and **MusIML 2026**.
 
-The page keeps the Nerfies/Bulma project-page foundation, removes navigation clutter, and uses clear alternating sections inspired by the presentation rhythm of the Hi-Q project page.
+This release is synchronized to the final public paper and reproducibility repository. It intentionally preserves the prior site snapshot and the original `newinml-7402` reproducibility artifact as archival ZIP files rather than deleting them.
 
-## Files
+## Public files
 
-- `index.html` — project page
+- `index.html` — final project page
 - `static/css/index.css` — page styling
-- `static/images/fig1_interventions.png` — current paper intervention schematic
-- `static/images/fig2_mistral_b2_hexbin.png` — Mistral result
-- `static/images/fig2_qwen_b2_hexbin.png` — Qwen result
-- `static/images/fig3_dose_curve.png` — dose result
-- `CAMERA_READY_TODOS.md` — reserved camera-ready additions
+- `static/images/` — paper figures used by the page
+- `downloads/Transformer_MLP_Transplants_NewInML_2026.pdf` — full public NewInML paper
+- `downloads/Transformer_MLP_Transplants_MusIML_2026.pdf` — full public MusIML paper
+- `downloads/Transformer_MLP_Transplants_{NewInML,MusIML}_2026_SUBMISSION.pdf` — workshop submission PDFs (main text, references, checklist)
+- `downloads/Transformer_MLP_Transplants_{NewInML,MusIML}_2026_SUPPLEMENT.pdf` — supplements (Appendices A–E; numbering continues the main paper)
+- `downloads/Transformer_MLP_Transplants_FINAL_PUBLIC_REPOSITORY_2026-10-18.zip` — current synchronized reproducibility repository
+- `downloads/SHA256SUMS.txt` — artifact checksums
 
-The Paper, arXiv, and Code buttons are intentionally non-clickable until public links are ready.
+## Preserved historical material
+
+- `archive/reproducibility/newinml-7402-original.zip` — original frozen artifact snapshot, preserved unchanged
+- `archive/site-snapshots/neurips-2026-main-before-final-paper.zip` — source snapshot of the previous website release
+- `CAMERA_READY_TODOS.md` — retained historical planning note; no longer current
+
+## Deployment
+
+This repository is static HTML/CSS/JS and is suitable for GitHub Pages. Update the existing repository in place so its Git history and previous commits remain available; do not delete and recreate the GitHub repository.

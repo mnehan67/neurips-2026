@@ -552,3 +552,78 @@ pre code {
   font-size: 0.95rem;
   font-family: 'Noto Sans', sans-serif;
 }
+
+/* ---------- Final-paper additions ---------- */
+.affiliation-line {
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.metric-grid {
+  align-items: stretch;
+}
+
+.metric-panel,
+.download-panel {
+  height: 100%;
+  padding: 1.2rem 1.25rem;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.metric-panel h4,
+.download-panel .title {
+  color: var(--blue-dark);
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 600;
+}
+
+.metric-panel p,
+.download-panel p {
+  color: #41464c;
+  line-height: 1.68;
+}
+
+.metric-note {
+  color: var(--muted) !important;
+  font-size: 0.92rem;
+}
+
+.scope-copy {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.download-grid {
+  align-items: stretch;
+}
+
+.download-panel .button {
+  margin-top: 0.4rem;
+}
+
+.artifact-note {
+  max-width: 860px;
+  margin: 1.4rem auto 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+.wide-metric-table th,
+.wide-metric-table td {
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .metric-panel,
+  .download-panel {
+    margin-bottom: 0.9rem;
+  }
+
+  .wide-metric-table th,
+  .wide-metric-table td {
+    font-size: 0.78rem;
+  }
+}

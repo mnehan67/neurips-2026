@@ -1,16 +1,11 @@
-# Camera-ready additions reserved in the project page
+# Archived planning note
 
-The public page already contains a hidden, commented-out `#camera-ready-additions` section in `index.html`.
-Uncomment it only when the requested analyses are ready.
+This file is retained only to preserve the history of the project-page repository. The analyses listed in the earlier planning version have now been completed or resolved in the final public paper and reproducibility repository.
 
-## Reviewer-requested additions
+For the current scientific state, use:
 
-1. Add a stronger scale baseline: displacement norm relative to the receiver-state norm.
-2. Add an attribution-patching / AtP-style baseline.
-3. Add a small exact-JVP / FP32 closure experiment to rule out finite-difference error.
-4. Reconcile the differing raw correlations reported across sections.
-5. Sharpen the contribution statement beyond simply confirming the local second-order KL approximation at full dose.
+- `index.html`
+- `downloads/Transformer_MLP_Transplants_FINAL_PUBLIC_REPOSITORY_2026-10-18.zip`
+- the final workshop PDFs under `downloads/`
 
-## Suggested public-page wording after the new results exist
-
-Keep the novelty statement narrow: the contribution is the controlled crossed-receiver intervention in which the exact same natural displacement is physically applied to multiple destinations, together with evidence that receiver-local downstream geometry predicts the resulting destination-specific full-dose ordering. Do not frame the Fisher quadratic form itself as new.
+Do not use this file as current submission guidance.
