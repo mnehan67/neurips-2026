@@ -1,0 +1,45 @@
+{
+  "cfg": {
+    "seed": 260826,
+    "n_contexts": 256,
+    "raw_pool_size": 320,
+    "core_tokens": 64,
+    "c4_modulus": 11,
+    "buckets": [
+      1,
+      2,
+      3
+    ],
+    "pair_batch": 4,
+    "stable_eps": 0.075,
+    "rel_depths": [
+      0.2,
+      0.4,
+      0.6,
+      0.74
+    ],
+    "n_cross_deltas": 512,
+    "receivers_bucket1": 16,
+    "receivers_replication": 32,
+    "permutation_reps": 2000,
+    "resume": true,
+    "cleanup_completed_chunks": true,
+    "soft_wallclock_hours": 15.0
+  },
+  "models": {
+    "mistral": {
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "expected_layers": 32,
+      "primary_expected_layer": 12
+    },
+    "qwen": {
+      "model_id": "Qwen/Qwen3-8B",
+      "expected_layers": 36,
+      "primary_expected_layer": 14
+    }
+  },
+  "gpus": [
+    "Tesla T4",
+    "Tesla T4"
+  ]
+}

@@ -1,0 +1,3 @@
+model,N,contexts_match_frozen_panel,fp32_fd075_vs_jvp32_median_cosine,fp32_fd075_vs_jvp32_min_cosine,fp32_fd075_vs_jvp32_spearman_Q,fp32_fd075_vs_jvp32_median_rel_Q_error,fp32_fd075_vs_jvp32_max_rel_Q_error,fp32_half_vs_jvp32_median_rel_Q_error,fp32_richardson_vs_jvp32_median_rel_Q_error,fp16_fd075_vs_jvp32_spearman_Q,fp16_fd075_vs_jvp32_median_rel_Q_difference,fp16_richardson_vs_jvp32_spearman_Q,fp16_richardson_vs_jvp32_median_rel_Q_difference,max_abs_delta_norm_difference_vs_frozen_panel
+qwen3_8b,16,True,1.0000006,0.9999837,1.0,0.002053,0.008154,0.001155,0.001785,0.785294,0.216374,0.697059,0.833712,0.023018
+mistral_7b,16,True,0.9999993,0.9999976,1.0,0.001999,0.003716,0.000746,0.001262,0.544118,0.267417,0.473529,0.520371,0.001198

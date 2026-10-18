@@ -1,0 +1,107 @@
+{
+  "experiment_version": "NewInML2026_fresh_c4_7b8b_v1",
+  "source_experiment_version": "ICLR_T4X2_FROZEN_V2",
+  "config": {
+    "seed": 260825,
+    "n_contexts_core": 64,
+    "raw_pool_size": 128,
+    "core_tokens": 64,
+    "future_tokens": 32,
+    "stable_eps": 0.075,
+    "mlp_source_eps": 0.05,
+    "default_pair_batch": 4,
+    "eps_grid": [
+      0.04,
+      0.05,
+      0.075,
+      0.1
+    ],
+    "eps_pairs": 128,
+    "eps_rank_gate": 0.95,
+    "wrong_pairs": 256,
+    "wrong_receivers_per_pair": 8,
+    "receiver_gap_gate": 0.15,
+    "correct_receiver_rho_gate": 0.75,
+    "residual_rho_gate": 0.3,
+    "bootstrap_reps": 600,
+    "dose_pairs": 256,
+    "doses": [
+      0.1,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "future_pairs": 128,
+    "future_horizons": [
+      1,
+      4,
+      8,
+      16,
+      32
+    ],
+    "future_batch": 1,
+    "control_pairs": 96,
+    "rotation_degrees": [
+      30,
+      60,
+      90
+    ],
+    "candidate_sizes": [
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "selection_alpha": 0.05,
+    "n_contexts_attention": 32,
+    "require_t4x2": true,
+    "allow_cpu_offload_14b": true,
+    "gpu_reserve_mib": 1024,
+    "cpu_offload_cap_gib": 20,
+    "delete_model_cache_after_each_model": true,
+    "resume": true
+  },
+  "pool_hash": "fa206c8dc58298de622c839e51e167ad2f570fa1d6c5b8042153f4bc3a5df948",
+  "corpus_source": "allenai/c4 validation",
+  "successful_models": [
+    {
+      "model_id": "Qwen/Qwen3-8B",
+      "depths": [
+        0.2,
+        0.4,
+        0.6,
+        0.743
+      ],
+      "layers": [
+        7,
+        14,
+        21,
+        26
+      ],
+      "pair_batch": 4
+    },
+    {
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "depths": [
+        0.194,
+        0.387,
+        0.613,
+        0.742
+      ],
+      "layers": [
+        6,
+        12,
+        19,
+        23
+      ],
+      "pair_batch": 4
+    }
+  ],
+  "notes": [
+    "The review artifact includes only successful MLP targets from the frozen fresh-C4 run.",
+    "Full raw C4 documents are intentionally not redistributed.",
+    "Attention and larger-model engineering attempts are not part of the reported workshop results."
+  ]
+}

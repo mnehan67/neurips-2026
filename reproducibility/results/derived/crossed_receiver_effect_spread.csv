@@ -1,0 +1,7 @@
+model,bucket,n_displacements,alt_receivers_per_displacement,median_log10_max_over_min_KL,fraction_displacements_ratio_ge_100
+Qwen3-8B,B1,512,15,3.458066,0.916016
+Qwen3-8B,B2,512,31,4.768258,0.994141
+Qwen3-8B,B3,512,31,4.358593,0.990234
+Mistral-7B,B1,512,15,2.90299,0.865234
+Mistral-7B,B2,512,31,3.314476,0.994141
+Mistral-7B,B3,512,31,3.64848,1.0

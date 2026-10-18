@@ -1,0 +1,2 @@
+Mistral-7B: N=16, median cosine(FD eps=.075, exact FP32 suffix JVP)=1.0000; Spearman(Q_FD,Q_exact)=1.0000; median relative Q error=0.0020.
+Qwen3-8B: N=16, median cosine(FD eps=.075, exact FP32 suffix JVP)=1.0000; Spearman(Q_FD,Q_exact)=1.0000; median relative Q error=0.0021.

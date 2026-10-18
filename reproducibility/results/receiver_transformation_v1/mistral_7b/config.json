@@ -1,0 +1,28 @@
+{
+  "seed": 26091016,
+  "seq_len": 64,
+  "D": 96,
+  "R": 8,
+  "pair_batch": 4,
+  "fd_eps": 0.075,
+  "map_rank": 16,
+  "ridge_alpha": 1.0,
+  "train_frac": 0.75,
+  "models": {
+    "mistral_7b": {
+      "model_id": "mistralai/Mistral-7B-v0.3",
+      "layer": 12
+    }
+  },
+  "pythia_models": {
+    "base": "EleutherAI/pythia-70m",
+    "seed1": "EleutherAI/pythia-70m-seed1",
+    "seed2": "EleutherAI/pythia-70m-seed2",
+    "seed3": "EleutherAI/pythia-70m-seed3",
+    "seed4": "EleutherAI/pythia-70m-seed4",
+    "seed5": "EleutherAI/pythia-70m-seed5"
+  },
+  "pythia_layer": 2,
+  "pythia_pairs_per_run": 24,
+  "boot_n": 5000
+}

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the accompanying paper."
+title: "Transformer MLP Transplants Depend on the Receiving State"
+type: software
+authors:
+  - family-names: Nehan
+    given-names: Muhammed
+    affiliation: Ajman University
+repository-code: "https://github.com/mnehan67/neurips-2026"
+url: "https://mnehan67.github.io/neurips-2026/"
+license: MIT
+date-released: 2026-10-18
+preferred-citation:
+  type: conference-paper
+  title: "Transformer MLP Transplants Depend on the Receiving State"
+  authors:
+    - family-names: Nehan
+      given-names: Muhammed
+      affiliation: Ajman University
+  year: 2026
+  conference:
+    name: "NeurIPS 2026 Workshops (NewInML and MusIML)"

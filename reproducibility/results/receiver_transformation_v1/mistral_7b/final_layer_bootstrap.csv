@@ -1,0 +1,5 @@
+model,downstream_layer,metric,comparison,mean,lo,hi,n_disp
+mistral_7b,31,cosine,receiver_map-minus-global_map,0.13202743174527617,0.10761873429158489,0.15515294435372198,24
+mistral_7b,31,cosine,receiver_map-minus-wrong_receiver_map,0.2131979142768614,0.18011990035158382,0.24399320465446594,24
+mistral_7b,31,cosine,receiver_map-minus-identity,0.20396870915089949,0.173675621332535,0.23470972898415038,24
+mistral_7b,31,cosine,receiver_map-minus-gain_only,0.20396871050115806,0.1736756224361083,0.23470973051094185,24

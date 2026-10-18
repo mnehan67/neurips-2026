@@ -1,27 +1,47 @@
-# Transformer MLP Transplants Depend on the Receiving State — Project Page
+# Transformer MLP Transplants Depend on the Receiving State
 
-Static project page for the NeurIPS 2026 workshop paper accepted at **NewInML 2026** and **MusIML 2026**.
+NeurIPS 2026 Workshops — NewInML & MusIML
 
-This release is synchronized to the final public paper and reproducibility repository. It intentionally preserves the prior site snapshot and the original `newinml-7402` reproducibility artifact as archival ZIP files rather than deleting them.
+Muhammed Nehan — Ajman University
 
-## Public files
+Project page: https://mnehan67.github.io/neurips-2026/
 
-- `index.html` — final project page
-- `static/css/index.css` — page styling
-- `static/images/` — paper figures used by the page
-- `downloads/Transformer_MLP_Transplants_NewInML_2026.pdf` — full public NewInML paper
-- `downloads/Transformer_MLP_Transplants_MusIML_2026.pdf` — full public MusIML paper
-- `downloads/Transformer_MLP_Transplants_{NewInML,MusIML}_2026_SUBMISSION.pdf` — workshop submission PDFs (main text, references, checklist)
-- `downloads/Transformer_MLP_Transplants_{NewInML,MusIML}_2026_SUPPLEMENT.pdf` — supplements (Appendices A–E; numbering continues the main paper)
-- `downloads/Transformer_MLP_Transplants_FINAL_PUBLIC_REPOSITORY_2026-10-18.zip` — current synchronized reproducibility repository
-- `downloads/SHA256SUMS.txt` — artifact checksums
+## Overview
 
-## Preserved historical material
+Activation patching and steering move internal updates between forward passes and often treat a moved update as
+if it carried a portable effect. We test this with a crossed-receiver design: a natural transformer MLP
+displacement is computed once, frozen, and added unchanged to many natural receiver states of Qwen3-8B and
+Mistral-7B. The same displacement has strongly receiver-dependent next-token effects, which an established
+receiver-local Fisher score ranks (median within-displacement Spearman 0.858–0.928). The receiver also changes
+the direction of the downstream causal effect, and receiver-specific maps predict part of that transformation
+for held-out displacements.
 
-- `archive/reproducibility/newinml-7402-original.zip` — original frozen artifact snapshot, preserved unchanged
-- `archive/site-snapshots/neurips-2026-main-before-final-paper.zip` — source snapshot of the previous website release
-- `CAMERA_READY_TODOS.md` — retained historical planning note; no longer current
+## Code and reproducibility
 
-## Deployment
+[`reproducibility/`](reproducibility/) contains:
 
-This repository is static HTML/CSS/JS and is suitable for GitHub Pages. Update the existing repository in place so its Git history and previous commits remain available; do not delete and recreate the GitHub repository.
+- the experiment notebooks (crossed-receiver runs, control panel and receiver maps, ordinary transplants,
+  Pythia replication, exact FP32 downstream-suffix JVP audit);
+- CPU verification scripts and the figure-generation script;
+- lightweight frozen CSV/JSON outputs behind the headline results.
+
+Start with [`reproducibility/README.md`](reproducibility/README.md).
+
+Larger frozen artifacts and the original experiment snapshot:
+https://anonymous.4open.science/r/newinml-7402/
+
+## Repository structure
+
+```
+index.html, static/          project page (GitHub Pages)
+reproducibility/
+  README.md                  how to verify and reproduce the results
+  requirements.txt           CPU verification environment
+  requirements-gpu.txt       model-level notebook environment
+  scripts/                   audits, derived statistics, figure generation, JVP-audit verification
+  notebooks/                 final experiment notebooks
+  results/                   lightweight frozen outputs
+LICENSE                      MIT license for the research code
+LICENSE-SITE.md              license of the project-page source (adapted from Nerfies)
+CITATION.cff                 citation metadata
+```

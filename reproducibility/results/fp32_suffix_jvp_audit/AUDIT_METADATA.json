@@ -1,0 +1,12 @@
+{
+  "audit": "exact FP32 downstream-suffix JVP",
+  "prefix_state_generation": "FP16, model-parallel across 2x T4",
+  "suffix_precision": "FP32",
+  "tf32_disabled": true,
+  "seq_len": 64,
+  "epsilon": 0.075,
+  "pairs_per_model": 16,
+  "qwen_intervention_layer": 14,
+  "mistral_intervention_layer": 12,
+  "seed": 26091016
+}

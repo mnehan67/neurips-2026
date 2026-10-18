@@ -1,0 +1,2 @@
+status,n_runs,positive_runs,median_partial_rho,bootstrap95_low,bootstrap95_high,sign_p,primary_success_6of6
+COMPLETE,6,6,0.799505363980836,0.7423734491048837,0.8266795166055604,0.03125,True
