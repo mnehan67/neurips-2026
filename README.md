@@ -7,7 +7,7 @@
 
 ## What the paper finds
 
-We take the difference between two naturally occurring transformer MLP outputs, freeze that vector, and add it unchanged to many alternative receiver contexts in Qwen3-8B and Mistral-7B. Across 31 alternative receivers, the median ratio between a fixed displacement's largest and smallest effects on the native next-token distribution (forward KL divergence) exceeds 1,000-fold. A standard receiver-local Fisher quadratic ranks these effects with median within-displacement Spearman correlations of **0.858â€“0.928** across three disjoint data buckets in each model. Exact FP32 *downstream-suffix* JVP audits, alternative-explanation controls, lower-dose tests, and downstream causal-footprint analyses further characterize the dependence.
+We take the difference between two naturally occurring transformer MLP outputs, freeze that vector, and add it unchanged to many alternative receiver contexts in Qwen3-8B and Mistral-7B. Across 31 alternative receivers, the median ratio between a fixed displacement's largest and smallest effects on the native next-token distribution (forward KL divergence) exceeds 1,000-fold. A standard receiver-local Fisher quadratic ranks these effects with median within-displacement Spearman correlations of **0.858-0.928** across three disjoint data buckets in each model. Exact FP32 *downstream-suffix* JVP audits, alternative-explanation controls, lower-dose tests, and downstream causal-footprint analyses further characterize the dependence.
 
 The experiment isolates **where the same update matters most**; it does not propose a new Fisher metric, a semantic decoding of MLP updates, or a new steering algorithm.
 
