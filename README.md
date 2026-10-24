@@ -1,7 +1,7 @@
 ﻿# Transformer MLP Transplants Depend on the Receiving State
 
-**Muhammed Nehan Â· Ajman University**
-**NeurIPS 2026 Workshops Â· NewInML + MusIML**
+**Muhammed Nehan · Ajman University**
+**NeurIPS 2026 Workshops · NewInML + MusIML**
 
 [Project website](https://mnehan67.github.io/neurips-2026/) & [MusIML paper](https://openreview.net/forum?id=tEGkJ4J3o7) & [Reproducibility guide](reproducibility/README.md)
 
