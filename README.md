@@ -3,7 +3,7 @@
 **Muhammed Nehan Â· Ajman University**
 **NeurIPS 2026 Workshops Â· NewInML + MusIML**
 
-[Project website](https://mnehan67.github.io/neurips-2026/) Â· [MusIML paper](https://openreview.net/forum?id=tEGkJ4J3o7) Â· [Reproducibility guide](reproducibility/README.md)
+[Project website](https://mnehan67.github.io/neurips-2026/) & [MusIML paper](https://openreview.net/forum?id=tEGkJ4J3o7) & [Reproducibility guide](reproducibility/README.md)
 
 ## What the paper finds
 
