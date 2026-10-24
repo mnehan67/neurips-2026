@@ -20,24 +20,22 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
+          <div class="hero-pill">NeurIPS 2026 Workshops · NewInML + MusIML</div>
           <h1 class="title is-1 publication-title">Transformer MLP Transplants Depend on the Receiving State</h1>
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://github.com/mnehan67">Muhammed Nehan</a></span>
           </div>
-          <p class="affiliation-line">Ajman University</p>
 
           <div class="acceptance-block" aria-label="Workshop acceptances">
-            <div class="acceptance-line">Accepted at <a href="https://www.musiml.org/events/2026-NeurIPS/index.html">MusIML 2026</a> <span class="acceptance-note">(Poster)</span></div>
-            <div class="acceptance-line">Accepted at <a href="https://newinml.github.io/">NewInML 2026</a> <span class="acceptance-note">(Poster)</span></div>
+            <div class="acceptance-line"><span class="confetti" aria-hidden="true">🎉</span> Accepted at <a href="https://newinml.github.io/">NewInML 2026</a> <span class="acceptance-note">(Poster)</span> <span class="confetti" aria-hidden="true">🎉</span></div>
+            <div class="acceptance-line"><span class="confetti" aria-hidden="true">🎉</span> Accepted at <a href="https://www.musiml.org/events/2026-NeurIPS/index.html">MusIML 2026</a> <span class="acceptance-note">(Poster)</span> <span class="confetti" aria-hidden="true">🎉</span></div>
           </div>
 
           <div class="publication-links" aria-label="Project links">
-            <span class="link-block"><a href="https://openreview.net/forum?id=tEGkJ4J3o7" target="_blank" rel="noopener noreferrer" class="button is-normal is-rounded is-dark"><span class="icon button-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 2.75h8l4 4V21.25H6z" fill="currentColor"/><path d="M14 2.75v4h4" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg></span><span>OpenReview</span></a></span>
+            <span class="link-block"><a href="https://openreview.net/forum?id=tEGkJ4J3o7" target="_blank" rel="noopener noreferrer" class="button is-normal is-rounded is-dark"><span class="icon button-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6 2.75h8l4 4V21.25H6z" fill="currentColor"/><path d="M14 2.75v4h4" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round"/></svg></span><span>Paper</span></a></span>
             <span class="link-block"><a href="https://github.com/mnehan67/neurips-2026" target="_blank" rel="noopener noreferrer" class="button is-normal is-rounded is-dark"><span class="icon button-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M12 2.5a9.7 9.7 0 0 0-3.07 18.9c.49.09.67-.21.67-.47v-1.85c-2.73.59-3.3-1.16-3.3-1.16-.45-1.13-1.09-1.43-1.09-1.43-.89-.61.07-.6.07-.6.98.07 1.5 1.01 1.5 1.01.88 1.5 2.3 1.07 2.86.82.09-.63.34-1.07.62-1.32-2.18-.25-4.47-1.09-4.47-4.84 0-1.07.38-1.94 1.01-2.63-.1-.25-.44-1.25.1-2.6 0 0 .82-.26 2.67 1a9.2 9.2 0 0 1 4.86 0c1.85-1.26 2.67-1 2.67-1 .54 1.35.2 2.35.1 2.6.63.69 1.01 1.56 1.01 2.63 0 3.76-2.29 4.59-4.48 4.84.35.3.67.9.67 1.82v2.7c0 .26.18.57.68.47A9.7 9.7 0 0 0 12 2.5z"/></svg></span><span>Code</span></a></span>
-            <span class="link-block"><a href="https://github.com/mnehan67/neurips-2026/tree/main/reproducibility" target="_blank" rel="noopener noreferrer" class="button is-normal is-rounded is-dark"><span class="icon button-svg-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M3 5.5A1.5 1.5 0 0 1 4.5 4h5l2 2h8A1.5 1.5 0 0 1 21 7.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 18.5z"/></svg></span><span>Reproducibility</span></a></span>
           </div>
-          <p class="version-status">NeurIPS 2026 workshop paper</p>
         </div>
       </div>
     </div>
@@ -51,11 +49,95 @@
         <img src="./static/images/fig1_crossed_receiver_design.png" class="paper-teaser-image" alt="Figure 1 of the paper. (a) Replacing the host MLP output by the donor output adds the natural displacement. (b) Crossed-receiver test: one frozen displacement is added unchanged to many natural receivers, and receivers are ranked within the fixed displacement.">
       </figure>
       <h2 class="subtitle has-text-centered teaser-caption">
-        Hold the <strong>same natural MLP displacement</strong> fixed, change only where it is written, and the downstream effect changes in both <strong>size</strong> and <strong>direction</strong>.
+        Hold the <strong>same natural MLP displacement</strong> fixed, change the natural receiver context, and the downstream effect changes in both <strong>size</strong> and <strong>direction</strong>.
       </h2>
     </div>
   </div>
 </section>
+<section class="section section-band is-soft explorer-section" id="explorer">
+  <div class="container is-max-desktop">
+    <div class="section-heading has-text-centered">
+      <div class="explorer-kicker">Interactive intuition</div>
+      <h2 class="title is-3">See what the crossed-receiver experiment is testing</h2>
+      <p class="section-kicker">The orange update is held fixed. Only the receiver changes. Use the controls below to see why that matters.</p>
+    </div>
+
+    <div class="explorer-shell">
+      <div class="explorer-tabs" role="tablist" aria-label="Paper visualizer views">
+        <button class="explorer-tab is-active" data-view="magnitude" type="button">Magnitude</button>
+        <button class="explorer-tab" data-view="direction" type="button">Direction</button>
+        <button class="explorer-tab" data-view="controls" type="button">Stress tests</button>
+      </div>
+
+      <div class="explorer-view" id="view-magnitude">
+        <div class="dose-row">
+          <label for="dose-slider"><strong>Intervention dose λ</strong></label>
+          <input id="dose-slider" type="range" min="10" max="100" step="5" value="100" aria-label="Intervention dose">
+          <output id="dose-value" for="dose-slider">1.00×</output>
+        </div>
+        <div class="magnitude-stage">
+          <div class="frozen-update">
+            <div class="frozen-label">same on every branch</div>
+            <div class="delta-symbol">Δu<sub>d</sub></div>
+            <div class="frozen-word">frozen</div>
+          </div>
+          <div class="receiver-stack">
+            <div class="receiver-row" data-sensitivity="0.22">
+              <div class="same-arrow">+ Δu<sub>d</sub></div>
+              <div class="receiver-chip">receiver r<sub>1</sub></div>
+              <div class="suffix-chip">suffix</div>
+              <div class="effect-box"><span>K<sub>d,1</sub></span><div class="effect-track"><div class="effect-fill"></div></div><small>mild</small></div>
+            </div>
+            <div class="receiver-row" data-sensitivity="0.55">
+              <div class="same-arrow">+ Δu<sub>d</sub></div>
+              <div class="receiver-chip">receiver r<sub>2</sub></div>
+              <div class="suffix-chip">suffix</div>
+              <div class="effect-box"><span>K<sub>d,2</sub></span><div class="effect-track"><div class="effect-fill"></div></div><small>larger</small></div>
+            </div>
+            <div class="receiver-row" data-sensitivity="0.92">
+              <div class="same-arrow">+ Δu<sub>d</sub></div>
+              <div class="receiver-chip">receiver r<sub>3</sub></div>
+              <div class="suffix-chip">suffix</div>
+              <div class="effect-box"><span>K<sub>d,3</sub></span><div class="effect-track"><div class="effect-fill"></div></div><small>strong</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="explorer-caption"><strong>Same vector, different effect.</strong> The ranking is across receivers <em>within one fixed displacement</em>. The slider is illustrative rather than a plotted dataset.</div>
+      </div>
+
+      <div class="explorer-view is-hidden" id="view-direction">
+        <div class="direction-stage">
+          <div class="direction-left">
+            <div class="direction-title">One fixed update enters three receiver contexts</div>
+            <div class="input-vector"><span>Δu<sub>d</sub></span><div class="vector-line input-line"></div></div>
+          </div>
+          <div class="direction-arrow">→</div>
+          <div class="direction-right">
+            <div class="direction-title">Downstream causal footprints rotate differently</div>
+            <div class="vector-plane" aria-label="Illustrative downstream direction vectors">
+              <div class="axis axis-x"></div><div class="axis axis-y"></div>
+              <div class="out-vector v1"><span>r<sub>1</sub></span></div>
+              <div class="out-vector v2"><span>r<sub>2</sub></span></div>
+              <div class="out-vector v3"><span>r<sub>3</sub></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="explorer-caption"><strong>The receiver changes direction too.</strong> In the paper, receiver-specific low-rank maps predict held-out downstream footprints better than one global map.</div>
+      </div>
+
+      <div class="explorer-view is-hidden" id="view-controls">
+        <div class="stress-grid">
+          <div class="stress-card"><div class="stress-value">0.884 / 0.930</div><div class="stress-label">Exact FP32 crossed JVP → full-dose KL</div><p>The main receiver ranking survives accurate downstream JVP evaluation.</p></div>
+          <div class="stress-card"><div class="stress-value">0.600 / 0.618</div><div class="stress-label">Output-geometry-only baseline</div><p>Starting softmax geometry matters, but does not reproduce the full receiver-local ordering.</p></div>
+          <div class="stress-card"><div class="stress-value">0.900 / 0.938</div><div class="stress-label">0.1× dose ordering → full-dose ordering</div><p>The ordering is already visible at much smaller intervention dose.</p></div>
+          <div class="stress-card"><div class="stress-value">0.379 / 0.489</div><div class="stress-label">Held-out residual association</div><p>Generic receiver fragility is substantial, but it does not exhaust the pair-specific signal.</p></div>
+        </div>
+        <div class="explorer-caption"><strong>Why this is more than “Fisher predicts KL.”</strong> The contribution is the crossed intervention and the evidence that numerical approximation, output geometry, generic fragility, and large dose do not explain the result alone.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="section section-band" id="overview">
   <div class="container is-max-desktop">
@@ -68,7 +150,7 @@
       <div class="column"><div class="overview-card"><div class="step-number">2</div><h3 class="title is-5">Freeze it</h3><p>Apply that exact vector, with identical norm and direction, to many natural receiver states.</p></div></div>
       <div class="column"><div class="overview-card"><div class="step-number">3</div><h3 class="title is-5">Measure receiver dependence</h3><p>Measure exact next-token KL and trace how the same causal footprint changes through the downstream network.</p></div></div>
     </div>
-    <div class="main-finding has-text-centered"><strong>Main finding:</strong> an internal update does not carry one context-free effect. The receiving state is part of the intervention.</div>
+    <div class="main-finding has-text-centered"><strong>Main finding:</strong> an internal update does not carry one context-free effect. The natural receiver context is part of the intervention.</div>
   </div>
 </section>
 
@@ -78,9 +160,9 @@
       <div class="column is-four-fifths">
         <div class="section-heading"><h2 class="title is-3">Abstract</h2></div>
         <div class="content has-text-justified prose-block">
-          <p>Activation patching and steering move internal updates between forward passes and often treat a moved update as if it carried a portable effect. Ordinary transplants cannot test this, because the update and the state that receives it change together. We isolate the receiver with a crossed-receiver design: a natural transformer MLP displacement <em>Δu = u<sub>j</sub> − u<sub>i</sub></em> is computed once, frozen, and physically added to many natural receiver states of Qwen3-8B and Mistral-7B; its exact next-token distributional effect is measured as a KL divergence.</p>
-          <p>The same displacement is mild in some receivers and disruptive in others; across 31 receivers its effect typically spans more than three orders of magnitude. An established receiver-local Fisher score ranks these full-dose effects consistently, with median within-displacement Spearman correlation <strong>0.858–0.928</strong> across all six model–bucket replications; the corresponding unweighted response reaches at most <strong>0.568</strong>. The association remains after removing generic displacement strength and receiver fragility, with residual correlation <strong>0.50–0.68</strong>.</p>
-          <p>The receiver also changes the direction of the effect: footprints of one displacement diverge across receivers, yet receiver-specific low-rank maps fitted on other displacements predict held-out footprints better than a global map. The effect of an internal update depends on where it is written, in both size and direction.</p>
+          <p>Researchers often study and steer language models by reusing internal signals across different inputs. But does the same signal produce the same effect in a different context? We investigate this in Qwen3-8B and Mistral-7B by taking the difference between two naturally occurring MLP outputs and adding the same fixed vector to different receiving contexts. Across 31 alternative receivers, the median ratio between the largest and smallest changes to next-token predictions, measured by KL divergence, exceeds <strong>1,000-fold</strong>, even though the vector never changes.</p>
+          <p>Importantly, this variation is structured: a standard receiver-local Fisher score ranks which contexts are affected most, achieving median within-displacement Spearman correlations of <strong>0.858–0.928</strong> across three disjoint data buckets in each model. An audit using exact FP32 downstream-suffix Jacobian-vector products yields correlations of <strong>0.884</strong> in Qwen and <strong>0.930</strong> in Mistral on a smaller crossed subset. The receiver ranking remains strongly aligned with the full-dose ranking at one-tenth strength, and neither output-distribution geometry nor general receiver sensitivity fully explains the ordering.</p>
+          <p>Receiver context also changes the direction of the update's downstream hidden-state effect, although receiver-specific low-rank maps recover a modest, reproducible component on held-out updates. Our findings show that an internal update does not have a fixed, portable effect: what it does depends on the context receiving it.</p>
         </div>
       </div>
     </div>
@@ -111,6 +193,14 @@
       <h3 class="title is-4 has-text-centered">1. The same displacement has very different effects across receivers</h3>
       <figure class="paper-figure result-figure"><img src="./static/images/fig2_crossed_hexbin_final.png" alt="Figure 2 of the paper: receiver-local Fisher score versus exact full-dose KL for 512 frozen displacements, each applied to 31 alternative receivers, in Qwen3-8B layer 14 and Mistral-7B layer 12 (bucket B2)."><figcaption>Bucket B2, primary depth: 512 frozen natural displacements, each applied to 31 alternative receivers (15,872 interventions per model). Panel headers give the median within-displacement Spearman correlation.</figcaption></figure>
       <div class="content has-text-justified result-copy"><p>Across 31 alternative receivers, the largest and smallest exact effects of one displacement differ by a median factor of roughly <strong>10<sup>4.4</sup>–10<sup>4.8</sup></strong> in Qwen3-8B and <strong>10<sup>3.3</sup>–10<sup>3.6</sup></strong> in Mistral-7B. Receiver-local Fisher ranking reaches <strong>0.871 / 0.872 / 0.858</strong> in Qwen and <strong>0.911 / 0.928 / 0.928</strong> in Mistral across B1/B2/B3.</p></div>
+    </div>
+
+    <div class="within-ranks-callout">
+      <h3 class="title is-4 has-text-centered">A closer look: receiver rankings for individual updates</h3>
+      <figure class="paper-figure result-figure within-ranks-figure">
+        <img src="./static/images/fig5_within_displacement_receiver_ranks.png" loading="lazy" alt="Figure 5: six rank-comparison panels for frozen displacement IDs 0, 1, and 2 from bucket B2. In Qwen3-8B and Mistral-7B, the horizontal axis ranks 31 receivers by their Fisher scores; the vertical axis ranks their observed KL effects. Points generally follow the perfect-agreement diagonal.">
+        <figcaption>Paper Figure 5 (appendix): three fixed B2 displacements per model, chosen by ID rather than by performance. Each panel compares Fisher-predicted receiver ranking with exact full-dose KL ranking, excluding the original-host receiver. Dashed line = perfect agreement.</figcaption>
+      </figure>
     </div>
 
     <div class="result-divider"></div>
@@ -144,12 +234,13 @@
     <div class="result-divider"></div>
 
     <div class="result-block">
-      <h3 class="title is-4 has-text-centered">5. Numerical and longer-horizon checks</h3>
+      <h3 class="title is-4 has-text-centered">5. Stress tests rule out simpler explanations</h3>
       <div class="columns is-variable is-5 metric-grid">
-        <div class="column"><div class="metric-panel"><h4>Exact FP32 suffix-JVP audit</h4><p>On 16 control-panel directions per model, FP32 centered differences and exact FP32 suffix JVPs have <strong>ρ = 1.000</strong> and median relative Fisher-score error of about <strong>0.21%</strong> (Qwen) and <strong>0.20%</strong> (Mistral).</p><p class="metric-note">Natural states come from the FP16 pipeline and only the downstream suffix is recomputed in FP32, so this is not a full-model FP32 JVP. FP16 scores for the same 16 cases agree less closely with the exact FP32 scores (ρ = 0.785 / 0.544), consistent with finite-precision effects; the large-scale Fisher score is therefore treated as a ranking diagnostic. The audit varies displacement direction at one fixed receiver and is not a replication of the primary receiver-ranking statistic.</p></div></div>
-        <div class="column"><div class="metric-panel"><h4>Teacher-forced continuation</h4><p>Correlation with cumulative KL remains positive through 32 future teacher-forced positions: <strong>0.857 → 0.565</strong> for Qwen and <strong>0.930 → 0.812</strong> for Mistral from <em>h</em> = 1 to 32.</p><p class="metric-note">Teacher forcing does not establish persistence under unconstrained generation.</p></div></div>
-        <div class="column"><div class="metric-panel"><h4>Independent pretraining</h4><p>Across six independently pretrained Pythia-70M runs under ordinary transplants, all controlled partial correlations are positive; median <strong>ρ = 0.800</strong>, 95% bootstrap interval <strong>[0.742, 0.827]</strong>.</p><p class="metric-note">This is an ordinary-transplant replication, not a crossed-receiver replication.</p></div></div>
+        <div class="column"><div class="metric-panel"><h4>Exact crossed FP32 JVP</h4><p>On 16 frozen B1 displacements × 15 alternative receivers, exact FP32 downstream-suffix Fisher scores retain the full-dose receiver ordering: <strong>ρ = 0.884</strong> (Qwen) and <strong>0.930</strong> (Mistral). FP16 and exact-FP32 Fisher rankings agree at <strong>0.977 / 0.988</strong>.</p><p class="metric-note">The upstream natural states remain from the FP16 pipeline; this is an exact FP32 downstream-suffix audit, not a full-model FP32 run.</p></div></div>
+        <div class="column"><div class="metric-panel"><h4>Not just softmax geometry</h4><p>A <em>p</em>-only control that freezes the host directional response reaches only <strong>0.600 / 0.618</strong>; applying the same host-derived full-dose logit shift to every receiver reaches <strong>0.521 / 0.609</strong>. The full receiver-local coupling is substantially stronger.</p><p class="metric-note">Output geometry matters, but it does not reproduce the observed receiver ordering by itself.</p></div></div>
+        <div class="column"><div class="metric-panel"><h4>Small dose + held-out fragility</h4><p>At <strong>0.1×</strong> dose, receiver ordering still matches full dose at <strong>0.900 / 0.938</strong>, while KL is only about 1% as large. After receiver effects are estimated on 72 training displacements and removed on 24 held-out ones, residual Fisher–KL association remains <strong>0.379 / 0.489</strong>.</p><p class="metric-note">Generic receiver fragility is substantial, especially in Mistral, but does not exhaust the pair-specific signal.</p></div></div>
       </div>
+      <div class="content has-text-justified result-copy"><p>These checks sharpen the interpretation rather than change the claim: the Fisher quadratic is established mathematics; the empirical contribution is the crossed intervention and the finding that a fixed natural update acquires a receiver-local effect that is not explained by output geometry, generic receiver fragility, numerical approximation, or large intervention dose alone.</p></div>
     </div>
   </div>
 </section>
@@ -158,8 +249,8 @@
   <div class="container is-max-desktop">
     <div class="section-heading has-text-centered"><h2 class="title is-3">Scope</h2><p class="section-kicker">What the result does and does not establish.</p></div>
     <div class="content prose-block scope-copy">
-      <p>The crossed design identifies receiver dependence because the intervention vector is physically fixed within each displacement. It does <strong>not</strong> establish that an MLP update is a context-independent semantic function, and the low-rank receiver maps are not complete or deterministic receiver operators.</p>
-      <p>The study is restricted to final-token MLP interventions and primarily next-token behavior. Teacher-forced continuation is supportive but is not free generation. The paper is diagnostic and proposes no steering or editing method; preserving an intervention's intended causal effect across receivers is a natural direction for future work.</p>
+      <p>The crossed design holds the intervention vector physically fixed while varying the natural receiver context. "Receiver context" includes the branch-specific information available to downstream computation, not only one final-token residual vector. It does <strong>not</strong> establish that an MLP update is a context-independent semantic function, and the low-rank receiver maps are not complete or deterministic receiver operators.</p>
+      <p>The study is restricted to final-token MLP interventions and primarily next-token behavior. Full-dose crossed activations can move away from the sampled natural activation neighborhood; the low-dose result reduces but does not eliminate this distribution-shift concern. Teacher-forced continuation is supportive but is not free generation. The paper is diagnostic and proposes no steering or editing method; preserving an intervention's intended causal effect across receivers is a natural direction for future work.</p>
     </div>
   </div>
 </section>
@@ -169,7 +260,7 @@
   <div class="container is-max-desktop">
     <div class="section-heading has-text-centered"><h2 class="title is-3">Code and reproducibility</h2></div>
     <div class="content prose-block">
-      <p>The <a href="https://github.com/mnehan67/neurips-2026/tree/main/reproducibility">reproducibility directory</a> of the GitHub repository contains the experiment notebooks, CPU verification scripts, the figure-generation script, and the lightweight frozen outputs behind the headline results. Larger frozen artifacts and the original experiment snapshot are hosted at <a href="https://anonymous.4open.science/r/newinml-7402/">anonymous.4open.science/r/newinml-7402</a>.</p>
+      <p>The <a href="https://github.com/mnehan67/neurips-2026/tree/main/reproducibility">public reproducibility directory</a> contains the experiment notebooks, verification scripts, lightweight frozen outputs, exact-JVP audit, and final crossed stress-test outputs. The repository is the public source of code and reproducibility material for this paper.</p>
     </div>
   </div>
 </section>
@@ -177,15 +268,8 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <p>Cite the workshop version you use.</p>
-    <pre><code>@inproceedings{nehan2026transformer_newinml,
-  title     = {Transformer MLP Transplants Depend on the Receiving State},
-  author    = {Nehan, Muhammed},
-  booktitle = {NewInML Workshop at NeurIPS 2026},
-  year      = {2026}
-}
-
-@inproceedings{nehan2026transformer_musiml,
+    <p>Cite the Muslims in ML workshop version.</p>
+    <pre><code>@inproceedings{nehan2026transformer_musiml,
   title     = {Transformer MLP Transplants Depend on the Receiving State},
   author    = {Nehan, Muhammed},
   booktitle = {7th Muslims in ML Workshop at NeurIPS 2026},
@@ -198,5 +282,6 @@
 <footer class="footer site-footer">
   <div class="container"><div class="columns is-centered"><div class="column is-9"><div class="content has-text-centered footer-note"><p>This website is shared under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br>Layout adapted from the <a href="https://nerfies.github.io/">Nerfies</a> project page template.</p></div></div></div></div>
 </footer>
+  <script src="./static/js/explorer.js"></script>
 </body>
 </html>

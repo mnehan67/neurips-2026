@@ -1,0 +1,21 @@
+{
+  "model": "qwen3_8b",
+  "repo_commit": "c6f672f477d90542c34fdd51276157cd42641ba1",
+  "github_ref_used_preference": "main",
+  "seed": 260826,
+  "B1_bucket": 1,
+  "seq_len": 64,
+  "layer": 14,
+  "n_deltas": 16,
+  "receiver_rows": 16,
+  "alt_receivers": 15,
+  "doses": [
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "suffix_precision": "FP32",
+  "prefix_states": "FP16",
+  "tf32": false
+}

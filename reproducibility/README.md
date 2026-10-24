@@ -1,77 +1,61 @@
-# Reproducing the paper
+# Reproducing the crossed-receiver study
 
-**Transformer MLP Transplants Depend on the Receiving State**
-Muhammed Nehan, Ajman University. NeurIPS 2026 Workshops (NewInML and MusIML).
+Paper: **Transformer MLP Transplants Depend on the Receiving State** (Muhammed Nehan; NeurIPS 2026 NewInML & MusIML Workshops).
 
-This directory contains the public code and lightweight frozen outputs used to verify the paper's principal
-results. The verification scripts run on CPU from the frozen outputs below; no model download or GPU is needed.
-The notebooks regenerate the outputs from the models (GPU required).
+This directory includes GPU experiment notebooks, frozen output tables, and independent CPU audits. **CPU verification** checks the released outputs without downloading models. **Full experiment regeneration** requires GPU resources, model checkpoints, and the documented datasets.
 
-## Quick verification
+## Quick verification (CPU; no model downloads)
+
+From the `reproducibility/` directory:
 
 ```bash
-cd reproducibility
 python -m pip install -r requirements.txt
-
-python scripts/audit_final_public_results.py          # crossed-receiver statistics, rank-KL decomposition,
-                                                      # receiver-map summaries, dose curve
+python scripts/audit_final_public_results.py
 python scripts/verify_fp32_suffix_jvp_audit.py --audit results/fp32_suffix_jvp_audit
-python scripts/derived_stats.py                       # spread of one displacement's effect across receivers
-python scripts/audit_joint_context_permutation.py     # host–donor permutation test (64x63 matrices)
-python scripts/make_paper_figures.py --out figures    # regenerates every data figure of the paper
+python scripts/check_website_assets.py
+python scripts/make_paper_figures.py --repo . --out figures
 ```
 
-`audit_final_public_results.py` recomputes and prints the primary within-displacement correlations
-(Qwen3-8B 0.871 / 0.872 / 0.858; Mistral-7B 0.911 / 0.928 / 0.928) and the residual-rank correlations from the
-row-level crossed tables. The rank-KL decomposition, the receiver-map summaries (final-layer held-out cosine
-0.316 vs 0.086 global in Qwen3-8B, 0.241 vs 0.109 in Mistral-7B), and the dose correlations are compared with
-the frozen tables, and the script stops with an error on any mismatch.
+`audit_final_public_results.py` runs four components: physical crossing, rank-KL variance decomposition, receiver transformations, **and the new crossed stress tests**. Individual tests can also be run directly (for example `python scripts/audit_crossed_stress_tests.py`). The `figures/` output directory is ignored by Git; do not commit compiled paper PDFs or generated figure files when they can be regenerated.
 
-## Environment
+## Which experiment produced which result?
 
-- **Verification (CPU):** `requirements.txt` (pandas 2.2.3, numpy 2.3.5, scipy 1.17.0, scikit-learn 1.8.0,
-  matplotlib 3.10.8).
-- **Model-level notebooks (GPU):** `requirements-gpu.txt` (torch ≥ 2.5, transformers ≥ 4.55, accelerate,
-  datasets). The large-model runs used Kaggle with two NVIDIA T4 GPUs (16 GB each), FP16 weights, and
-  Accelerate sharding. Model revisions are listed in `MODEL_REVISIONS.md`; model and data licenses are in
-  `THIRD_PARTY_NOTICES.md`.
+| Experiment | Frozen results | Source notebook / script |
+| --- | --- | --- |
+| Fixed MLP update crossed with natural receivers, Qwen3-8B and Mistral-7B, B1/B2/B3 | `results/physical_crossing_v3/` | `notebooks/KAGGLE_T4X2_receiver_causal_replication_V3.ipynb` |
+| Attribution/geometry baselines, downstream footprints, receiver-specific rank-16 maps, and 72/24 split | `results/receiver_transformation_v1/` | `notebooks/qwen_receiver_transformation_kaggle_t4x2.ipynb`, `notebooks/mistral_receiver_transformation_kaggle_t4x2.ipynb` |
+| Crossed FP32 downstream-suffix stress tests on 16 B1 displacements × 15 alternative receivers/model | `results/crossed_stress_tests_v1/` | `notebooks/kaggle_2xT4_crossed_reviewer_stress_tests.ipynb` and `scripts/audit_crossed_stress_tests.py` |
+| Corrected held-out receiver-only fragility and residual association (72 train / 24 held-out displacements) | `results/crossed_stress_tests_v1/corrected_fragility/` | Frozen outputs and `scripts/audit_crossed_stress_tests.py` |
+| Additional FP32-suffix JVP numerical comparison | `results/fp32_suffix_jvp_audit/` | `notebooks/kaggle_2xT4_exact_fp32_suffix_jvp_audit.ipynb`, `scripts/verify_fp32_suffix_jvp_audit.py` |
+| Ordinary host–donor transplants, alternatives, teacher-forced continuation | `results/fresh_c4_qwen3_8b_mistral7b/` | `notebooks/reproduce_fresh_c4_qwen_mistral.ipynb` |
+| Pythia-70M ordinary-transplant replication across six pretrained runs | `results/pythia_six_run/` | `notebooks/reproduce_pythia_confirmatory.ipynb` |
+| KL effect-spread summary | `results/derived/` | `scripts/derived_stats.py` |
 
-## Experiments
+## Key numerical summaries
 
-| Experiment | Notebook | Frozen outputs |
-|---|---|---|
-| Crossed-receiver test, Qwen3-8B (layer 14) and Mistral-7B-v0.3 (layer 12): buckets B1–B3, B1 at four depths | `notebooks/KAGGLE_T4X2_receiver_causal_replication_V3.ipynb` | `results/physical_crossing_v3/` |
-| 96×8 control panel: alternative predictors, equal-norm control, causal footprints, held-out receiver maps | `notebooks/qwen_receiver_transformation_kaggle_t4x2.ipynb`, `notebooks/mistral_receiver_transformation_kaggle_t4x2.ipynb` | `results/receiver_transformation_v1/` |
-| Ordinary 64×63 transplant matrices: host–donor residual, wrong-state diagnostic, dose, teacher-forced continuation | `notebooks/reproduce_fresh_c4_qwen_mistral.ipynb` | `results/fresh_c4_qwen3_8b_mistral7b/` (primary depths) |
-| Pythia-70M ordinary-transplant replication (six independently pretrained runs) | `notebooks/reproduce_pythia_confirmatory.ipynb` | `results/pythia_six_run/` |
-| Exact FP32 downstream-suffix JVP audit (16 control-panel cases per model) | `notebooks/kaggle_2xT4_exact_fp32_suffix_jvp_audit.ipynb` | `results/fp32_suffix_jvp_audit/` |
-| Spread of one displacement's effect across receivers | `scripts/derived_stats.py` | `results/derived/` |
+- Fixed displacement, 31 alternative receivers (buckets B2/B3): median max/min exact-KL ratios exceed **1,000×**; these are *within-update extrema*, not typical randomly sampled receiver pairs. Raw numbers are in `results/derived/crossed_receiver_effect_spread.csv`.
+- Fisher ranking, median within-displacement Spearman (B1/B2/B3): **Qwen: 0.871/0.872/0.858; Mistral: 0.911/0.928/0.928**. Three disjoint data buckets in each model are not six independent model trainings.
+- Exact FP32 downstream-suffix JVP versus **original frozen full-dose KL**: **0.884 (Qwen), 0.930 (Mistral)**. The newer crossed-stress CSVs also contain comparisons with *FP32-recomputed downstream-suffix full-dose KL*; consult the exact metric names to distinguish them.
+- FP16 versus exact-FP32 Fisher **receiver rankings**: **0.977 / 0.988**. At 0.1× intervention dose versus full-dose KL rank: **0.900 / 0.938**.
+- Corrected held-out receiver-only fragility: **0.595 / 0.845**; Fisher: **0.738 / 0.893**. Bootstrap intervals for the paired Fisher-minus-fragility advantage include zero. Pooled held-out residual Fisher–KL association: **0.379 / 0.489**.
+- Final-layer held-out cosine of receiver-specific maps: **0.316 / 0.241**, compared with global maps **0.086 / 0.109**. The maps use previously observed receivers and unseen displacements.
 
-Configurations and splits are stored next to their outputs: for example `results/physical_crossing_v3/summary/config.json`,
-`results/receiver_transformation_v1/*/config.json` and `train_test_split.csv`, and
-`results/fresh_c4_qwen3_8b_mistral7b/FRESH_C4_PROTOCOL.json`.
+## Figures
 
-## Frozen outputs
+```bash
+python scripts/make_paper_figures.py --repo . --out figures
+```
 
-`results/` holds only the CSV, JSON, and text outputs needed to verify the headline results and regenerate
-the figures. For the Qwen3-8B control panel, the frozen bootstrap and standard-error summaries are included,
-but per-held-out-displacement map scores are not available (they are included for Mistral-7B).
+The generated PDFs include `fig2_crossed_hexbin.pdf`, `fig3_receiver_maps.pdf`, the dose/teacher-forcing/trajectory plots, and `figD_within_displacement_receiver_ranks.pdf` (**supplementary Figure 5**). Figure 5 uses the first three **fixed displacement IDs 0, 1, 2** from bucket B2 for each model, selected by ID (not performance), ranks 31 *alternative* receivers by local Fisher and exact KL, and excludes the original host anchor. Its six per-displacement Spearman correlations are computed directly from the frozen CSVs. The website's PNG is rendered from the camera-ready Figure 5 PDF supplied with the final paper source.
 
-## Larger artifact
+## Numerical provenance and limitations
 
-Larger frozen artifacts and the original experiment snapshot are hosted separately:
-https://anonymous.4open.science/r/newinml-7402/
+- Large-model runs used Qwen3-8B and Mistral-7B-v0.3 with frozen FP16 weights. Inputs are deterministic 64-token C4 validation contexts assigned to disjoint buckets; primary sites are layers 14 and 12.
+- The FP32 audits recompute a downstream suffix from **FP16-cached natural prefix states**. They validate local directional responses and crossed receiver ordering; they are not a full-model FP32 rerun. The exact experimental controls and fields are in `results/crossed_stress_tests_v1/README.md` and each model's `RUN_METADATA.json`.
+- `corrected_fragility/HELDOUT_FRAGILITY_CORRECTED_SUMMARY.csv` supersedes an earlier cache-collided notebook fragility summary. The latter is deliberately **not** included in this release.
+- The PCA/5-NN naturality proxy is descriptive and does **not** prove activation manifold membership. Teacher-forced continuation is **not** free generation. No new steering algorithm is proposed.
+- The paper's rank-16 receiver maps are trained for a fixed set of receivers on 72 updates and tested on 24 held-out updates. They do not demonstrate transfer to unseen receivers.
 
-That snapshot includes, for example, the 65,280-pair Mistral ordinary-transplant matrix, the ordinary matrices
-at all four depths, and the frozen Pythia token-ID inputs. This GitHub repository provides the final public
-code, verification scripts, and lightweight outputs, including the final control-panel and numerical-audit
-results.
+## Environment and licenses
 
-## Scope
-
-- The Pythia-70M result is an ordinary-transplant replication, not a crossed-receiver replication.
-- The numerical audit is an exact FP32 downstream-suffix JVP: natural states come from the FP16 pipeline and
-  only the downstream suffix is recomputed in FP32. It is not a full-model FP32 JVP, and it varies the
-  displacement direction at one fixed receiver rather than replicating the receiver-ranking statistic.
-- Teacher-forced continuation is not free generation.
-- The study is diagnostic; it proposes no steering method.
+CPU dependency versions are pinned in `requirements.txt`. GPU setup requires `requirements-gpu.txt`, compatible PyTorch/Transformers, and the model checkpoints, dataset, and hardware documented by the notebooks. Model revisions and third-party notices are in `MODEL_REVISIONS.md` and `THIRD_PARTY_NOTICES.md`.

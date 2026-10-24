@@ -16,7 +16,8 @@ Numerical audit of the finite-difference Fisher score used in the crossed experi
 
 ## Files
 - `*_FP32_suffix_exact_JVP.csv`, `ALL_MODELS_FP32_suffix_exact_JVP.csv`, `FP32_suffix_exact_JVP_summary.csv`,
-  `AUDIT_METADATA.json`, `PAPER_READY_SUMMARY.txt` — notebook outputs.
+  `AUDIT_METADATA.json`, `PAPER_READY_SUMMARY.txt` — notebook outputs (also bundled unchanged as
+  `FP32_SUFFIX_EXACT_JVP_AUDIT_RESULTS.zip`).
 - `FP16_VS_FP32_SUFFIX_SUMMARY.csv`, `FP16_VS_FP32_SUFFIX_PER_PAIR.csv` — written by
   `analysis/verify_fp32_suffix_jvp_audit.py`: context checks, recomputed FP32 summary, and the comparison of the
   FP16 finite-difference scores for the same 16 control-panel cases

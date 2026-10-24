@@ -1,4 +1,3 @@
-# Papers, archives, and large binaries are distributed elsewhere
 *.pdf
 *.zip
 *.pt
@@ -7,15 +6,14 @@
 *.safetensors
 *.mmap
 *.npy
-
-# Python / notebook / cache artifacts
 __pycache__/
 .ipynb_checkpoints/
 .cache/
 outputs/
 checkpoints/
 reproducibility/figures/
-
-# Editor / tooling
 .playwright-mcp/
+.DS_Store
+
+audit_logs/
 .DS_Store

@@ -252,6 +252,42 @@ def fig_trajectories(repo, out):
     plt.close(fig)
 
 
+
+# ---------------------------------------------------------------------------
+# Appendix Figure 5: individual receiver ranks for B2 displacement IDs 0-2.
+# No performance-based selection: fixed IDs 0,1,2 from the frozen tables.
+# ---------------------------------------------------------------------------
+def fig_within_displacement_ranks(repo, out):
+    cases = [
+        ("results/physical_crossing_v3/primary/qwen_b2_layer14_cross_receiver_physical.csv", "Qwen3-8B", 14, BLUE),
+        ("results/physical_crossing_v3/primary/mistral_b2_layer12_cross_receiver_physical.csv", "Mistral-7B", 12, ORANGE),
+    ]
+    fig, axes = plt.subplots(3, 2, figsize=(5.5, 6.4), sharex=True, sharey=True)
+    for col, (rel, model, layer, color) in enumerate(cases):
+        data = repo.csv(rel)
+        for row, delta_id in enumerate((0, 1, 2)):
+            chosen = data[(data["delta_id"] == delta_id) & (data["receiver"] != data["origin_host"])].copy()
+            if len(chosen) != 31:
+                raise ValueError(f"Expected 31 alternative receivers, got {len(chosen)} for {model} d={delta_id}")
+            chosen["fisher_rank"] = chosen["q_fisher"].rank(method="average")
+            chosen["kl_rank"] = chosen["kl_cross"].rank(method="average")
+            rho = spearmanr(chosen["q_fisher"], chosen["kl_cross"]).statistic
+            ax = axes[row, col]
+            ax.plot([1, 31], [1, 31], ls="--", color="#92a1ad", lw=0.8, zorder=1)
+            ax.scatter(chosen["fisher_rank"], chosen["kl_rank"], s=10, color=color, alpha=0.82, linewidth=0, zorder=2)
+            ax.set_xlim(.5, 31.5); ax.set_ylim(.5, 31.5)
+            ax.set_xticks([1, 10, 20, 31]); ax.set_yticks([1, 10, 20, 31])
+            ax.grid(color="#e7e8ea", linewidth=.35)
+            for spine in ("right", "top"): ax.spines[spine].set_visible(False)
+            ax.set_title(f"Displacement {delta_id}: \u03c1 = {rho:.3f}", fontsize=7.5, loc="left", pad=4)
+            if col == 0: ax.set_ylabel("Observed KL rank", fontsize=7.5)
+            if row == 2: ax.set_xlabel("Receiver-local Fisher rank", fontsize=7.5)
+            print(f"Figure 5: {model}, displacement {delta_id}: rho={rho:.6f}")
+        axes[0, col].text(.5, 1.22, f"{model} — layer {layer}", transform=axes[0, col].transAxes, ha="center", fontsize=9, fontweight="bold")
+    fig.subplots_adjust(wspace=.23, hspace=.36, left=.13, right=.98, bottom=.08, top=.89)
+    _save(fig, out / "figD_within_displacement_receiver_ranks.pdf")
+    plt.close(fig)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", default=".", type=Path)
@@ -264,6 +300,7 @@ def main():
     fig_dose(repo, a.out)
     fig_teacher_forced(repo, a.out)
     fig_trajectories(repo, a.out)
+    fig_within_displacement_ranks(repo, a.out)
 
 
 if __name__ == "__main__":

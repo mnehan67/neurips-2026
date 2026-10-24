@@ -1,47 +1,50 @@
-# Transformer MLP Transplants Depend on the Receiving State
+﻿# Transformer MLP Transplants Depend on the Receiving State
 
-NeurIPS 2026 Workshops — NewInML & MusIML
+**Muhammed Nehan Â· Ajman University**
+**NeurIPS 2026 Workshops Â· NewInML + MusIML**
 
-Muhammed Nehan — Ajman University
+[Project website](https://mnehan67.github.io/neurips-2026/) Â· [MusIML paper](https://openreview.net/forum?id=tEGkJ4J3o7) Â· [Reproducibility guide](reproducibility/README.md)
 
-Project page: https://mnehan67.github.io/neurips-2026/
+## What the paper finds
 
-## Overview
+We take the difference between two naturally occurring transformer MLP outputs, freeze that vector, and add it unchanged to many alternative receiver contexts in Qwen3-8B and Mistral-7B. Across 31 alternative receivers, the median ratio between a fixed displacement's largest and smallest effects on the native next-token distribution (forward KL divergence) exceeds 1,000-fold. A standard receiver-local Fisher quadratic ranks these effects with median within-displacement Spearman correlations of **0.858â€“0.928** across three disjoint data buckets in each model. Exact FP32 *downstream-suffix* JVP audits, alternative-explanation controls, lower-dose tests, and downstream causal-footprint analyses further characterize the dependence.
 
-Activation patching and steering move internal updates between forward passes and often treat a moved update as
-if it carried a portable effect. We test this with a crossed-receiver design: a natural transformer MLP
-displacement is computed once, frozen, and added unchanged to many natural receiver states of Qwen3-8B and
-Mistral-7B. The same displacement has strongly receiver-dependent next-token effects, which an established
-receiver-local Fisher score ranks (median within-displacement Spearman 0.858–0.928). The receiver also changes
-the direction of the downstream causal effect, and receiver-specific maps predict part of that transformation
-for held-out displacements.
+The experiment isolates **where the same update matters most**; it does not propose a new Fisher metric, a semantic decoding of MLP updates, or a new steering algorithm.
 
-## Code and reproducibility
+## Repository layout
 
-[`reproducibility/`](reproducibility/) contains:
+| Path | Purpose |
+| --- | --- |
+| `index.html`, `static/css/`, `static/js/`, `static/images/` | Hosted project page, interactive receiver visualizer, and figures |
+| `reproducibility/README.md` | Run instructions, frozen output layout, scope of claims |
+| `reproducibility/notebooks/` | GPU research notebooks, including final crossed stress-test reproduction |
+| `reproducibility/scripts/` | CPU verification and figure-generation scripts |
+| `reproducibility/results/` | Published lightweight frozen CSV/JSON outputs |
+| `CITATION.cff` | Citation metadata (MusIML paper as preferred reference) |
 
-- the experiment notebooks (crossed-receiver runs, control panel and receiver maps, ordinary transplants,
-  Pythia replication, exact FP32 downstream-suffix JVP audit);
-- CPU verification scripts and the figure-generation script;
-- lightweight frozen CSV/JSON outputs behind the headline results.
+The site is intentionally static: no build system is required. GitHub Pages serves `index.html` from the repository root. To preview locally, run `python -m http.server 8000` in the repository root and open `http://localhost:8000/`.
 
-Start with [`reproducibility/README.md`](reproducibility/README.md).
+## Verify the paper from frozen data
 
-Larger frozen artifacts and the original experiment snapshot:
-https://anonymous.4open.science/r/newinml-7402/
-
-## Repository structure
-
+```bash
+cd reproducibility
+python -m pip install -r requirements.txt
+python scripts/audit_final_public_results.py
+python scripts/verify_fp32_suffix_jvp_audit.py --audit results/fp32_suffix_jvp_audit
+python scripts/check_website_assets.py
+python scripts/make_paper_figures.py --repo . --out figures
 ```
-index.html, static/          project page (GitHub Pages)
-reproducibility/
-  README.md                  how to verify and reproduce the results
-  requirements.txt           CPU verification environment
-  requirements-gpu.txt       model-level notebook environment
-  scripts/                   audits, derived statistics, figure generation, JVP-audit verification
-  notebooks/                 final experiment notebooks
-  results/                   lightweight frozen outputs
-LICENSE                      MIT license for the research code
-LICENSE-SITE.md              license of the project-page source (adapted from Nerfies)
-CITATION.cff                 citation metadata
-```
+
+The audit suite now includes the **crossed stress tests and corrected held-out fragility outputs**. The figure script also regenerates the individual fixed-displacement receiver rank panels from B2 (Figure 5 in the supplementary appendix). For more detail see [the reproducibility README](reproducibility/README.md).
+
+## Scope and limitations
+
+- **Next-token behavior:** The main response metric is forward KL of the native versus intervened next-token distributions, not a benchmark of semantic steering success.
+- **FP32 audit:** The numerical stress test runs the downstream suffix in FP32 starting from states cached by the FP16 prefix; it is not a full-model FP32 reproduction.
+- **Receiver-specific maps:** These generalize to held-out *displacements for already observed receivers*, not to novel receivers.
+- **Receiver-only baseline:** It is strong, particularly in Mistral; the bootstrap interval for Fisher's held-out advantage over this baseline crosses zero. The residual association nevertheless remains positive.
+- **Lower dose:** Strong agreement of receiver ordering at 0.1Ã— does not establish that crossed activations lie on the natural manifold.
+
+## Licensing
+
+Research scripts and notebooks: [MIT](LICENSE). Website source: [CC BY-SA 4.0; adapted from Nerfies](LICENSE-SITE.md). Model, dataset, and third-party notices are in [`reproducibility/THIRD_PARTY_NOTICES.md`](reproducibility/THIRD_PARTY_NOTICES.md). The frozen experimental outputs and research figures are not relicensed by the code license.

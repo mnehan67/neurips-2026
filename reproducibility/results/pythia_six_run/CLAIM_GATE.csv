@@ -1,0 +1,6 @@
+claim,status
+Old source-tangent repair is a universal causal fix,REJECTED_BY_EXISTING_3_OF_6_RESULT
+Downstream visibility adds information beyond magnitude + source geometry,SUPPORTED_PRIMARY
+Same-norm downstream-Fisher rotation reduces KL,NOT_SUPPORTED_AS_GATEKEPT_CAUSAL
+Fisher repair beats same-angle random rotation,NOT_PROMOTED
+Operational safe transfer behaves like an equivalence relation,DIRECTED_PROTOCOL_DEPENDENT_COMPATIBILITY_NOT_EQUIVALENCE

@@ -7,7 +7,7 @@ SCRIPTS=[
     "scripts/audit_physical_crossing.py",
     "scripts/audit_rank_variance_decomposition.py",
     "scripts/audit_receiver_transformation.py",
-    "scripts/audit_q_vs_dose.py",
+    "scripts/audit_crossed_stress_tests.py",
 ]
 for rel in SCRIPTS:
     print("\n"+"="*80)
